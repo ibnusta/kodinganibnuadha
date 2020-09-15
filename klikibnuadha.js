@@ -1,0 +1,1 @@
+buttonTranslate_Clicked(ibnuadha);
