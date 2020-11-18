@@ -1,0 +1,224 @@
+* {
+  transition: 0.5s;
+}
+body {
+  overflow: hidden;
+}
+:root {
+  --on-off-circle: 30px;
+}
+.title {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: -50px;
+}
+.kipas {
+  margin: 100px auto;
+  border: 5px solid #eaeaea;
+  border-radius: 50%;
+  width: calc(var(--on-off-circle) * 10);
+  height: calc(var(--on-off-circle) * 10);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 15px black;
+}
+.kipas .kipas_circle {
+  width: calc(var(--on-off-circle) * 2);
+  height: calc(var(--on-off-circle) * 2);
+  background-color: #ddd;
+  border-radius: 50%;
+  position: relative;
+}
+.kipas .kipas_circle .baling {
+  width: calc(var(--on-off-circle) * 2);
+  height: calc(var(--on-off-circle) * 4);
+  background-color: rgb(50, 121, 162);
+  position: absolute;
+  border-radius: 30px;
+  z-index: -1;
+}
+.kipas .kipas_circle .baling:nth-child(1) {
+  top: 30px;
+  right: 0;
+  transform-origin: top;
+  transform: rotate(calc(360deg / 6));
+}
+.kipas .kipas_circle .baling:nth-child(3) {
+  top: 30px;ign
+  right: 0;
+  transform-origin: top;
+  transform: rotate(calc(360deg / -6));
+}
+
+.kipas .kipas_circle .baling:nth-child(2) {
+  bottom: 40px;
+  left: 0px;
+}
+
+.reminder {
+  text-align: center;
+}
+.reminder_text {
+  font-weight: bold;
+  animation: reminderText 3s linear forwards;
+}
+
+.control {
+  position: absolute;
+  bottom: 0;
+  height: calc(var(--on-off-circle) * 5);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.on_off_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.on_off_wrapper span {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.on_off {
+  border: none;
+  height: calc(var(--on-off-circle) * 2);
+  width: var(--on-off-circle);
+  position: relative;
+  border-radius: var(--on-off-circle);
+  outline: none;
+  box-shadow: 0 0 5px black;
+  cursor: pointer;
+  outline: none;
+}
+.on_off_circle {
+  width: var(--on-off-circle);
+  height: var(--on-off-circle);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: black;
+  animation: off 0.3s linear forwards;
+}
+
+.on_off.active {
+  background-color: rgb(50, 121, 162);
+}
+.on_off_circle.active {
+  background-color: rgb(13, 63, 92);
+  animation: on 0.3s linear forwards;
+}
+
+.level_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.level_switcher {
+  height: calc(var(--on-off-circle) * 3);
+  width: var(--on-off-circle);
+  border-radius: var(--on-off-circle);
+  background-color: #efefef;
+  box-shadow: 0 0 5px black;
+  position: relative;
+}
+
+.level_switcher ~ input {
+  display: none;
+}
+.level_circle {
+  width: var(--on-off-circle);
+  height: var(--on-off-circle);
+  position: absolute;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+.level_circle:nth-child(1) {
+  bottom: 0;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+.level_circle:nth-child(2) {
+  bottom: var(--on-off-circle);
+}
+.level_circle:nth-child(3) {
+  top: 0;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+.level_circle:hover,
+.level_circle.active {
+  background-color: rgb(50, 121, 162);
+  color: white;
+}
+
+.level_1_animation {
+  animation: rotate 0.3s linear infinite;
+}
+.level_2_animation {
+  animation: rotate 0.2s linear infinite;
+}
+.level_3_animation {
+  animation: rotate 0.1s linear infinite;
+}
+
+.stop {
+  animation: stop 0.3s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stop {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+
+@keyframes on {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes off {
+  from {
+    transform: translateY(-30px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes reminderText {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
